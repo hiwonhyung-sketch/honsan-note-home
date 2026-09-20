@@ -13,7 +13,7 @@
 ## 1. 모니터링 3중 그물
 | # | 잡는 것 | 도달처 | 도구 | 누가 |
 |---|---|---|---|---|
-| 1 | 즉시 장애(다운) | 폰 푸시·이메일 | UptimeRobot(무료·5분) | 사장님 가입(§4) |
+| 1 | 즉시 장애(다운) | 폰 푸시·이메일 | UptimeRobot(무료·5분) | ✅설정 완료(2026-09-20) |
 | 2 | 서비스 경고(배포실패·사용량·결제·만료) | honsannote@gmail.com | 각 서비스 이메일 알림 | 사장님 토글(§5) |
 | 3 | 한도 임박·만료 D-30·이상 | 폰 캘린더 + 클로드 보고 | Google Calendar + 정기 점검 | 클로드 |
 
@@ -39,7 +39,10 @@
 | 도메인 | — | 구매 안 함 | 없음(vercel.app) | — |
 | SSL | https | Vercel 자동 | 자동 갱신 | 자동 |
 
-## 4. UptimeRobot 설정(24/7 다운→폰) — 사장님 1회
+## 4. UptimeRobot 설정(24/7 다운→폰) — ✅완료(2026-09-20)
+> 모니터 `honsannote.vercel.app` 등록·정상 «Up» 확인. 알림 honsannote@gmail.com. 다운/복구 시에만.
+> 남은 선택: 폰에 UptimeRobot 앱 설치 → 푸시 / Alert Contacts에서 «Test notification»으로 도달 검증.
+
 1. uptimerobot.com 가입(무료).
 2. Add New Monitor → HTTP(s) → URL `https://honsannote.vercel.app` → 5분 간격.
 3. Alert Contacts: 이메일 `honsannote@gmail.com` 추가 + **UptimeRobot 폰 앱** 설치(푸시).
