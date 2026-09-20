@@ -1,0 +1,6 @@
+# 배포(공개)에서 제외 — index.html 만 서비스에 필요(이미지·폰트는 base64 인라인)
+_src.html
+_assets.json
+_a/
+OPERATIONS.md
+_scand.png
