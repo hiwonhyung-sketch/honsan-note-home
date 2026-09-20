@@ -1,0 +1,4 @@
+# 로컬 전용(프리뷰 서버·훅)
+.claude/
+# stray 스캔/임시
+_scand.png

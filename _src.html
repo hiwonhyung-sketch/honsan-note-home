@@ -1,0 +1,506 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>혼산노트</title>
+<style>
+/* ══════════════════════════════════════════════════════════
+   혼산노트 — 등산 앱 소개 홈페이지
+   주제 = 혼산노트. 사업자 정보(코드에이치)는 푸터에 작게.
+   인터랙션 = 히어로 패럴랙스 · 내 맞춤 난이도 슬라이더 · 100대 명산 도장 채움
+   조판: word-break:keep-all · 줄바꿈은 의미 단위에서 직접
+   ══════════════════════════════════════════════════════════ */
+@font-face{
+  font-family:"Pretendard KR";
+  src:url(__ASSET0__) format("woff2-variations");
+  font-weight:100 900; font-style:normal; font-display:swap;
+}
+:root{
+  color-scheme:light;
+  --paper:#F5F7F6; --raise:#FFFFFF; --ink:#14181B; --ink2:#525960; --ink3:#889097;
+  --line:#E7EBEA; --line2:#D9DFDD;
+  --green:#2D7D34; --green-deep:#1B5722; --green-lit:#5AC968; --green-soft:#E9F6EC;
+  --amber:#D9870F; --amber-soft:#FBEEDA;
+  --dark:#101613; --dark2:#18211D;
+  --sans:"Pretendard KR",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;
+  --edge:clamp(22px,5vw,72px); --max:1160px;
+  /* 타이포 스케일 (고정) */
+  --t-hero:clamp(33px,5.2vw,68px);
+  --t-h2:clamp(29px,3.7vw,48px);
+  --t-h3:clamp(23px,2.7vw,35px);
+  --t-lead:clamp(16px,1.4vw,18.5px);
+  --t-body:16px;
+  /* 여백 스케일 */
+  --s-sec:clamp(80px,10vw,132px);
+  --s-gap:clamp(72px,9.5vw,124px);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--t-body);line-height:1.8;
+  word-break:keep-all;overflow-wrap:normal;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+img,svg{display:block;max-width:100%;}
+h1,h2,h3,p,figure,ul,li{margin:0;padding:0;list-style:none;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;color:inherit;background:none;border:0;}
+::selection{background:var(--green-soft);color:var(--green-deep);}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px;}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--edge);}
+.tnum{font-variant-numeric:tabular-nums;}
+
+/* ── 상단 ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s,box-shadow .3s;}
+.nav.solid{background:rgba(245,247,246,.86);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);box-shadow:0 1px 0 var(--line);}
+.nav-in{display:flex;align-items:center;height:62px;}
+.brand{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;letter-spacing:-.04em;color:#fff;transition:color .3s;}
+.nav.solid .brand{color:var(--ink);}
+.brand svg{width:24px;height:24px;flex:0 0 auto;}
+.nav-cta{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;letter-spacing:-.02em;
+  padding:9px 16px;border-radius:999px;white-space:nowrap;background:var(--green);color:#fff;transition:background .2s,transform .2s;}
+.nav-cta:hover{background:var(--green-deep);transform:translateY(-1px);}
+.nav-cta svg{width:15px;height:15px;}
+
+/* Google Play 다운로드 배지 */
+.dl-wrap{display:flex;flex-direction:column;gap:9px;align-items:flex-start;}
+.gplay{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;border-radius:13px;
+  padding:11px 22px 11px 17px;border:1px solid rgba(255,255,255,.24);box-shadow:0 10px 26px rgba(0,0,0,.3);transition:transform .2s,box-shadow .2s;}
+.gplay:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(0,0,0,.36);}
+.gplay .pico{width:23px;height:23px;flex:0 0 auto;}
+.gplay .ptxt{display:flex;flex-direction:column;line-height:1.12;text-align:left;}
+.gplay .ptxt small{font-size:10px;font-weight:600;letter-spacing:.02em;opacity:.85;}
+.gplay .ptxt b{font-size:17px;font-weight:700;letter-spacing:-.01em;}
+.dl-note{font-size:12.5px;font-weight:600;letter-spacing:-.01em;color:rgba(255,255,255,.62);padding-left:2px;}
+
+/* ── 히어로 (실제 산 사진) ── */
+.hero{position:relative;overflow:hidden;background:#1b2530;}
+.hero .bgwrap{position:absolute;left:0;right:0;top:-9%;height:118%;z-index:0;will-change:transform;}
+.hero .bgwrap picture{display:block;width:100%;height:100%;}
+.hero .bg{width:100%;height:100%;object-fit:cover;object-position:50% 46%;
+  animation:heroKen 18s linear infinite alternate;will-change:transform;transform-origin:66% 46%;}
+@keyframes heroKen{from{transform:scale(1.06) translate3d(1.4%,1%,0);}to{transform:scale(1.17) translate3d(-1.6%,-1.4%,0);}}
+.hero .veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,12,20,.34) 0%,rgba(6,12,20,0) 24%,rgba(6,12,20,.10) 52%,rgba(6,10,16,.62) 82%,rgba(5,9,14,.86) 100%);}
+.hero .in{position:relative;z-index:2;min-height:min(92svh,820px);padding-top:calc(62px + 6vh);padding-bottom:clamp(56px,8vh,104px);
+  display:flex;flex-direction:column;justify-content:flex-end;color:#fff;}
+.hero .eyebrow{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:700;letter-spacing:.005em;color:#fff;
+  background:rgba(11,17,23,.46);-webkit-backdrop-filter:blur(7px) saturate(140%);backdrop-filter:blur(7px) saturate(140%);
+  border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:9px 16px 9px 14px;
+  box-shadow:0 6px 20px rgba(6,12,18,.24);}
+.hero .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;flex:0 0 auto;
+  background:var(--green-lit);box-shadow:0 0 0 4px rgba(90,201,104,.28);}
+.hero h1{margin-top:18px;font-size:var(--t-hero);line-height:1.03;letter-spacing:-.052em;font-weight:800;text-shadow:0 3px 30px rgba(0,14,24,.38);}
+.hero h1 span{display:block;overflow:hidden;}
+.hero h1 span > i{display:block;font-style:normal;transform:translateY(107%);animation:rise 1.1s cubic-bezier(.16,.8,.24,1) forwards;}
+.hero h1 span:nth-child(2) > i{animation-delay:.13s;}
+@keyframes rise{to{transform:translateY(0);}}
+.hero .sub{margin-top:26px;max-width:38ch;font-size:var(--t-lead);line-height:1.72;font-weight:500;color:rgba(255,255,255,.95);
+  text-shadow:0 2px 14px rgba(0,14,24,.42);opacity:0;transform:translateY(14px);animation:fadeup 1s .52s cubic-bezier(.2,.7,.25,1) forwards;}
+.hero .status{margin-top:32px;display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+  border:1px solid rgba(255,255,255,.36);border-radius:999px;padding:11px 19px;font-size:14px;font-weight:700;letter-spacing:-.02em;
+  opacity:0;transform:translateY(14px);animation:fadeup 1s .68s cubic-bezier(.2,.7,.25,1) forwards;}
+.hero .status i{width:7px;height:7px;border-radius:50%;background:var(--green-lit);box-shadow:0 0 0 4px rgba(90,201,104,.22);}
+@keyframes fadeup{to{opacity:1;transform:none;}}
+
+/* ── 섹션 공통 ── */
+.sec{padding-block:var(--s-sec);}
+.sec + .sec,.sec.bordered{border-top:1px solid var(--line);}
+.head{max-width:660px;}
+.head .lab{font-size:13px;font-weight:800;letter-spacing:.01em;color:var(--green);}
+.head h2{margin-top:15px;font-size:var(--t-h2);line-height:1.16;letter-spacing:-.042em;font-weight:800;text-wrap:balance;}
+.head p{margin-top:20px;font-size:var(--t-lead);line-height:1.85;color:var(--ink2);max-width:46ch;}
+
+.reveal.pre{opacity:0;transform:translateY(22px);}
+.reveal{transition:opacity .9s cubic-bezier(.2,.7,.25,1),transform .9s cubic-bezier(.2,.7,.25,1);}
+
+/* ── 기능 행 ── */
+.rows{margin-top:clamp(56px,7vw,96px);display:flex;flex-direction:column;gap:var(--s-gap);}
+.row{display:grid;grid-template-columns:1fr;gap:clamp(36px,5vw,72px);align-items:center;}
+@media (min-width:880px){
+  .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .row.flip .txt{order:2;}
+}
+.txt .k{font-size:13px;font-weight:800;letter-spacing:.01em;color:var(--ink3);}
+.txt h3{margin-top:12px;font-size:var(--t-h3);line-height:1.24;letter-spacing:-.038em;font-weight:800;text-wrap:balance;}
+.txt p{margin-top:18px;font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.85;color:var(--ink2);max-width:40ch;}
+.txt .stats{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;}
+.txt .stats span{font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--ink2);background:var(--raise);
+  border:1px solid var(--line);border-radius:999px;padding:8px 14px;}
+
+.phone{justify-self:center;width:100%;max-width:300px;}
+.phone-body{position:relative;border-radius:36px;padding:8px;
+  background:linear-gradient(150deg,#F1F3F5 0%,#CFD4D9 40%,#AEB4BB 74%);
+  box-shadow:0 2px 3px rgba(255,255,255,.75) inset,0 -2px 5px rgba(60,66,72,.22) inset,0 44px 84px rgba(14,20,24,.18),0 8px 22px rgba(14,20,24,.1);}
+.phone-body::before{content:"";position:absolute;left:-2px;top:112px;width:3px;height:58px;border-radius:2px;background:linear-gradient(90deg,#c4c9ce,#9aa0a6);}
+.phone-body::after{content:"";position:absolute;right:-2px;top:132px;width:3px;height:42px;border-radius:2px;background:linear-gradient(270deg,#c4c9ce,#9aa0a6);}
+.phone-view{position:relative;border-radius:29px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #0b0d0f;}
+.phone-view::after{content:"";position:absolute;z-index:5;top:11px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#1b2833,#000 70%);box-shadow:0 0 0 1.4px rgba(255,255,255,.12);}
+.phone-view img{width:100%;display:block;}
+
+/* ── 인터랙션: 내 맞춤 난이도 ── */
+.calc{background:var(--raise);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.6vw,34px);box-shadow:0 30px 60px rgba(18,26,30,.07);width:100%;}
+.calc-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.calc-cell{border-radius:16px;padding:18px 18px 20px;background:var(--paper);}
+.calc-cell.mine{background:var(--green-soft);}
+.calc-cell .cap{font-size:12.5px;font-weight:700;color:var(--ink3);}
+.calc-cell.mine .cap{color:var(--green-deep);}
+.calc-cell .grade{margin-top:12px;font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-.04em;line-height:1;}
+.calc-cell.mine .grade{color:var(--green-deep);}
+.calc-cell .time{margin-top:9px;font-size:14px;font-weight:600;color:var(--ink2);}
+.calc-cell .bar{margin-top:16px;height:8px;border-radius:99px;background:#E4E8E8;overflow:hidden;}
+.calc-cell.mine .bar{background:#CDE7D3;}
+.calc-cell .bar i{display:block;height:100%;border-radius:99px;background:var(--ink3);}
+.calc-cell.mine .bar i{background:var(--green);transition:width .35s cubic-bezier(.3,.8,.35,1);}
+.calc-slider{margin-top:26px;}
+.calc-slider .lbl{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.calc-slider .lbl b{font-size:14.5px;font-weight:800;letter-spacing:-.02em;}
+.calc-slider .lbl span{font-size:13px;font-weight:600;color:var(--green);}
+.calc-slider input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:34px;margin-top:6px;background:transparent;cursor:pointer;}
+.calc-slider input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(90deg,var(--green) var(--fill,66%),#E4E8E8 var(--fill,66%));}
+.calc-slider input[type=range]::-moz-range-track{height:6px;border-radius:99px;background:#E4E8E8;}
+.calc-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:#fff;border:2px solid var(--green);box-shadow:0 3px 10px rgba(45,125,52,.28);}
+.calc-slider input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--green);box-shadow:0 3px 10px rgba(45,125,52,.28);}
+.calc-slider .ticks{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--ink3);margin-top:2px;}
+.calc-note{margin-top:18px;font-size:12.5px;line-height:1.6;color:var(--ink3);}
+
+/* ── 인터랙션: 100대 명산 도장 ── */
+.stamp-wrap{width:100%;background:var(--raise);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.6vw,32px);box-shadow:0 30px 60px rgba(18,26,30,.07);}
+.stamp-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;}
+.stamp-top .n{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-.04em;}
+.stamp-top .n b{color:var(--amber);}
+.stamp-top .t{font-size:13px;font-weight:700;color:var(--ink3);}
+.stamp-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:clamp(6px,0.9vw,10px);}
+.stamp-grid i{aspect-ratio:1;border-radius:50%;background:var(--paper);border:1px solid var(--line);transition:background .4s ease,border-color .4s ease,transform .4s cubic-bezier(.3,1.4,.5,1);}
+.stamp-grid i.on{background:radial-gradient(circle at 38% 34%,#F4C463,var(--amber));border-color:var(--amber);transform:scale(1.06);}
+.stamp-cap{margin-top:16px;font-size:12.5px;color:var(--ink3);}
+
+/* ── 그 밖에(그리드) ── */
+.more{background:var(--raise);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.grid{margin-top:clamp(44px,5vw,68px);display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;}
+@media (min-width:720px){.grid{grid-template-columns:repeat(4,1fr);}}
+.cell{background:var(--raise);padding:clamp(24px,2.4vw,32px);display:flex;flex-direction:column;gap:14px;}
+.cell .ic{width:44px;height:44px;border-radius:13px;background:var(--green-soft);display:grid;place-items:center;}
+.cell .ic svg{width:26px;height:26px;}
+.cell b{font-size:16px;font-weight:800;letter-spacing:-.03em;}
+.cell p{font-size:13.5px;line-height:1.68;color:var(--ink2);}
+
+/* ── 경쟁요소 ── */
+.why{background:var(--dark);color:#fff;}
+.why .head h2{color:#fff;}
+.why .head .lab{color:var(--green-lit);}
+.why-grid{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,3vw,48px) clamp(22px,3vw,40px);}
+@media (min-width:820px){.why-grid{grid-template-columns:repeat(4,1fr);}}
+.why-grid div .n{font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.05em;line-height:1;}
+.why-grid div .l{margin-top:14px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.7);}
+
+/* ── 마무리 ── */
+.end{background:var(--dark);color:#fff;}
+.end .in{padding-block:clamp(60px,7vw,104px) clamp(92px,12vw,150px);text-align:center;display:flex;flex-direction:column;align-items:center;}
+.end h2{font-size:clamp(34px,5vw,72px);line-height:1.12;letter-spacing:-.05em;font-weight:800;}
+.end p{margin-top:24px;font-size:var(--t-lead);line-height:1.7;color:rgba(255,255,255,.8);max-width:32ch;}
+.end .status{margin-top:38px;display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:13px 22px;font-size:14.5px;font-weight:700;letter-spacing:-.02em;}
+.end .status i{width:7px;height:7px;border-radius:50%;background:var(--green-lit);box-shadow:0 0 0 4px rgba(90,201,104,.2);}
+
+/* ── 푸터 ── */
+footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.1);}
+.foot{padding-block:34px 46px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;}
+.foot .fb{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;letter-spacing:-.04em;color:#fff;}
+.biz{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;line-height:1.7;}
+.biz b{color:rgba(255,255,255,.72);font-weight:600;}
+.biz .sep{opacity:.3;}
+.foot .cp{margin-left:auto;font-size:12px;letter-spacing:.02em;}
+@media (max-width:640px){.foot .cp{margin-left:0;} .biz{flex-direction:column;gap:3px;} .biz .sep{display:none;}}
+
+/* ── 데스크톱 미세 인터랙션 ── */
+@media (hover:hover) and (min-width:721px){
+  .cell{transition:background .28s ease;}
+  .cell:hover{background:var(--green-soft);}
+  .phone{transition:transform .5s cubic-bezier(.2,.7,.25,1);}
+  .phone:hover{transform:translateY(-8px);}
+  .txt .stats span{transition:border-color .2s ease,color .2s ease;}
+  .txt .stats span:hover{border-color:var(--green);color:var(--green-deep);}
+}
+
+/* ── 모바일 정비 ── */
+@media (max-width:640px){
+  :root{ --s-sec:58px; --s-gap:50px; }
+  .hero .bg{object-position:58% 50%;}
+  .hero .in{min-height:84svh;padding-bottom:clamp(40px,6vh,64px);}
+  .hero .eyebrow{font-size:12.5px;letter-spacing:0;padding:8px 14px 8px 12px;}
+  .hero h1{font-size:clamp(38px,11vw,46px);line-height:1.08;letter-spacing:-.04em;margin-top:14px;}
+  .hero .sub{margin-top:20px;font-size:15px;line-height:1.6;max-width:31ch;}
+  .hero .dl-wrap{margin-top:26px !important;}
+  .head h2{font-size:clamp(25px,6.6vw,30px);}
+  .head p{margin-top:15px;line-height:1.72;}
+  .rows{margin-top:46px;}
+  .txt h3{font-size:clamp(21px,5.6vw,26px);}
+  .txt p{margin-top:14px;line-height:1.72;}
+  .txt .stats{margin-top:19px;}
+  .calc,.stamp-wrap{border-radius:20px;}
+  .why-grid{gap:30px 18px;}
+  .end .in{padding-block:clamp(72px,16vw,112px);}
+  .end p{margin-top:18px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;}
+  .hero h1 span > i,.hero .sub,.hero .status,.reveal.pre{transform:none;opacity:1;}
+  html{scroll-behavior:auto;}
+}
+</style>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="혼산노트 홈">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 26 9.6 16.4 15.2 23 22 13.4 30 26Z" fill="currentColor"/><circle cx="24" cy="7.4" r="3.1" fill="#5AC968"/></svg>
+      혼산노트
+    </a>
+  </div>
+</nav>
+
+<!-- ════ 히어로 ════ -->
+<header class="hero" id="top">
+  <div class="bgwrap" id="bgwrap">
+    <picture>
+      <source media="(max-width:640px)" srcset="__HERO2M__" />
+      <img class="bg" src="__HERO2__" alt="산 정상 바위에 앉아 계곡과 겹겹의 산줄기를 바라보는 등산객" fetchpriority="high" />
+    </picture>
+  </div>
+  <div class="veil"></div>
+  <div class="wrap in">
+    <h1><span><i>혼자 걸어도</i></span><span><i>든든하게.</i></span></h1>
+    <p class="sub">전국의 산과 등산 코스, 그리고 내 산행 기록까지.<br />준비부터 기록까지 혼산노트 하나로 이어집니다.</p>
+    <div class="dl-wrap" style="margin-top:34px;animation:fadeup 1s .68s cubic-bezier(.2,.7,.25,1) both;">
+      <a class="gplay" href="#download" aria-label="Google Play에서 다운로드 (출시 예정)">
+        <svg class="pico" viewBox="0 0 42 46" aria-hidden="true"><path d="M6 6 25 14.5 6 23Z" fill="#00A2FF"/><path d="M6 23 25 31.5 6 40Z" fill="#00D95F"/><path d="M6 6 38 23 25 14.5Z" fill="#FF424A"/><path d="M6 40 25 31.5 38 23Z" fill="#FFCB00"/></svg>
+        <span class="ptxt"><small>지금 다운로드</small><b>Google Play</b></span>
+      </a>
+      <span class="dl-note">Google Play 출시 예정</span>
+    </div>
+  </div>
+</header>
+
+<!-- ════ 대표 기능 ════ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="lab">앱 소개</span>
+      <h2>산에 가기로 마음먹은 순간부터 다녀온 뒤까지</h2>
+      <p>어디로 갈지 고르고, 얼마나 걸릴지 가늠하고, 산속에서 길을 잃지 않고, 다녀온 뒤 기록으로 남기기까지. 혼자 산에 가는 사람에게 필요한 모든 순간을 한 앱에 담았습니다.</p>
+    </div>
+
+    <div class="rows">
+      <!-- 1 오늘의 산 -->
+      <div class="row reveal">
+        <figure class="phone"><div class="phone-body"><div class="phone-view"><img src="__ASSET4__" alt="혼산노트 홈 화면" /></div></div></figure>
+        <div class="txt">
+          <span class="k">계획</span>
+          <h3>오늘 가기 좋은 산을<br />먼저 알려드립니다</h3>
+          <p>전국 4,600여 개의 산과 등산 코스를 담았습니다. 오늘의 날씨와 내 컨디션을 함께 살펴, 지금 다녀오기 좋은 산을 추천합니다.</p>
+          <div class="stats"><span>전국 산 4,600여 곳</span><span>국립공원 공식 코스</span><span>계절·시간대로 바뀌는 하늘</span></div>
+        </div>
+      </div>
+
+      <!-- 2 내 맞춤 난이도 (인터랙션) -->
+      <div class="row reveal">
+        <div class="txt">
+          <span class="k">개인 맞춤</span>
+          <h3>같은 코스라도,<br />나에게 맞는 난이도로</h3>
+          <p>공식 난이도는 그대로 두고, 그동안의 산행 기록을 반영해 내 예상 난이도와 소요 시간을 따로 계산합니다. 아래에서 걸음 속도를 움직여 보세요.</p>
+        </div>
+        <div class="calc" aria-label="내 맞춤 난이도 체험">
+          <div class="calc-two">
+            <div class="calc-cell"><div class="cap">공식 난이도</div><div class="grade">보통</div><div class="time">약 5시간 소요</div><div class="bar"><i style="width:70%"></i></div></div>
+            <div class="calc-cell mine"><div class="cap">내 예상</div><div class="grade" id="myGrade">수월함</div><div class="time" id="myTime">약 4시간 20분 소요</div><div class="bar"><i id="myBar" style="width:48%"></i></div></div>
+          </div>
+          <div class="calc-slider">
+            <div class="lbl"><b>내 걸음 속도</b><span id="paceLabel">평소보다 빠른 편</span></div>
+            <input id="pace" type="range" min="0" max="100" value="66" aria-label="내 걸음 속도" />
+            <div class="ticks"><span>느긋하게</span><span>보통</span><span>빠르게</span></div>
+          </div>
+          <p class="calc-note">위 숫자는 계산 방식을 보여드리는 체험용 예시입니다. 실제 앱에서는 내 산행 기록으로 계산합니다.</p>
+        </div>
+      </div>
+
+      <!-- 3 오프라인 지도·경로 -->
+      <div class="row reveal">
+        <figure class="phone"><div class="phone-body"><div class="phone-view"><img src="__ASSET5__" alt="지리산 경로와 오프라인 지도 화면" /></div></div></figure>
+        <div class="txt">
+          <span class="k">산행 중</span>
+          <h3>신호가 끊긴 산속에서도,<br />길은 열려 있습니다</h3>
+          <p>산에 들기 전 지도를 통째로 받아 두면, 인터넷 없이도 등산로와 코스가 보입니다. 산림청 등산로망 위에서 출발지부터 정상까지 경로를 안내합니다.</p>
+          <div class="stats"><span>오프라인 지도 저장</span><span>등산로망 91,522점</span><span>출발–정상 경로 안내</span></div>
+        </div>
+      </div>
+
+      <!-- 4 산행 일기 -->
+      <div class="row reveal">
+        <div class="txt">
+          <span class="k">기록</span>
+          <h3>다녀온 하루가,<br />한 장의 기록으로</h3>
+          <p>사진과 체감 난이도, 그날의 이야기를 남기면 산행이 일기로 쌓입니다. 걸은 거리와 시간, 그리고 계절이 담긴 나만의 산행 노트가 됩니다.</p>
+          <div class="stats"><span>산행 일기</span><span>사진 기록</span><span>체감 난이도</span></div>
+        </div>
+        <figure class="phone"><div class="phone-body"><div class="phone-view"><img src="__ASSET6__" alt="산행 일기 화면" /></div></div></figure>
+      </div>
+
+      <!-- 5 100대 명산 도장 (인터랙션) -->
+      <div class="row reveal">
+        <div class="stamp-wrap" id="stampWrap" aria-label="100대 명산 도장">
+          <div class="stamp-top"><div class="n"><b id="stampCount">0</b> / 100</div><div class="t">100대 명산</div></div>
+          <div class="stamp-grid" id="stampGrid" aria-hidden="true"></div>
+          <p class="stamp-cap">다녀온 산이 도장으로 채워집니다.</p>
+        </div>
+        <div class="txt">
+          <span class="k">재미</span>
+          <h3>다녀온 산이<br />도장으로 남습니다</h3>
+          <p>산을 다녀올 때마다 도장이 하나씩. 100대 명산과 권역별 배지를 모으고, 산길잡이 레벨을 올리는 재미가 더해집니다.</p>
+          <div class="stats"><span>100대 명산 도장</span><span>143개 배지</span><span>산길잡이 레벨</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 그 밖에 ════ -->
+<section class="sec more">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="lab">그 밖에</span>
+      <h2>산행의 모든 순간을 위한 기능들</h2>
+    </div>
+    <div class="grid reveal">
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 8h3M4 8v3M24 8h-3M24 8v3M4 20h3M24 20h-3" stroke="#2D7D34" stroke-width="1.8" stroke-linecap="round"/><path d="M8 20h12l-4-6-2 3-1.5-2L8 20Z" fill="#2D7D34"/></svg></span>
+        <b>AR 봉우리</b><p>화면을 들면 눈앞 봉우리의 이름이 떠올라요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 4l10 6-10 6L4 10 14 4Z" fill="#2D7D34" opacity=".28"/><path d="M4 14l10 6 10-6M4 18l10 6 10-6" stroke="#2D7D34" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <b>3D 미리보기</b><p>가려는 코스를 3D로 미리 날아서 살펴봐요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25s8-7 8-12a8 8 0 1 0-16 0c0 5 8 12 8 12Z" fill="#2D7D34" opacity=".28"/><circle cx="14" cy="12.5" r="3" fill="#2D7D34"/></svg></span>
+        <b>GPS 트래킹</b><p>걸은 길이 지도에 그대로 그려져 남아요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="4" y="6" width="20" height="16" rx="4" fill="#2D7D34" opacity=".28"/><path d="M12 10.5l6 3.5-6 3.5v-7Z" fill="#2D7D34"/></svg></span>
+        <b>이 산 영상</b><p>그 산의 등산 영상을 모아서 볼 수 있어요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="10" cy="10" r="3.4" fill="#2D7D34"/><circle cx="19" cy="11" r="2.8" fill="#2D7D34" opacity=".5"/><path d="M4 22c1.4-3 3.6-4.4 6-4.4s4.6 1.4 6 4.4M17 21c1-2 2.6-3 4.4-3s3 .8 3.6 2" stroke="#2D7D34" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></span>
+        <b>안내산악회</b><p>그 산으로 가는 산악회 출발편을 찾아봐요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="10" cy="10" r="4.4" fill="#2D7D34"/><path d="M8 20c2-1.2 4-1.8 6-1.8s4.4.6 6.4 1.8M13 20c1.4-1 3-1.5 4.6-1.5s3 .5 4.4 1.5" stroke="#2D7D34" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".5"/><path d="M18 8h5M20.5 5.5v5" stroke="#2D7D34" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <b>날씨 비교</b><p>여러 산의 그날 날씨를 나란히 비교해요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="8" y="7" width="12" height="14" rx="4" fill="#2D7D34" opacity=".28"/><path d="M11 4h6M11 24h6" stroke="#2D7D34" stroke-width="1.8" stroke-linecap="round"/><path d="M14 11v3.5l2.5 1.5" stroke="#2D7D34" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></span>
+        <b>워치 가져오기</b><p>스마트워치와 GPX 기록을 불러와요.</p>
+      </div>
+      <div class="cell">
+        <span class="ic"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="12" r="7" fill="#2D7D34" opacity=".28"/><path d="M14 6.5l1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5L14 6.5Z" fill="#2D7D34"/><path d="M10 19l-1 5 5-2.4 5 2.4-1-5" stroke="#2D7D34" stroke-width="1.8" stroke-linejoin="round" fill="none" opacity=".5"/></svg></span>
+        <b>봉우리 도감</b><p>다녀온 봉우리를 도감으로 모아요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 경쟁요소 ════ -->
+<section class="sec why">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="lab">왜 혼산노트일까</span>
+      <h2>한국 산을, 가장 정확하고 든든하게</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div><div class="n tnum">4,686<span style="font-size:.5em;font-weight:700;letter-spacing:-.02em"> 곳</span></div><div class="l">산림청 공식 자료로 담은<br />전국의 산</div></div>
+      <div><div class="n tnum">91,522<span style="font-size:.5em;font-weight:700;letter-spacing:-.02em"> 점</span></div><div class="l">등산로망 위에서<br />계산하는 실제 경로</div></div>
+      <div><div class="n">통신 0</div><div class="l">신호가 끊겨도<br />열리는 오프라인 지도</div></div>
+      <div><div class="n">공식만</div><div class="l">없는 정보는 지어내지 않고<br />공식 자료만 싣습니다</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 마무리 ════ -->
+<section class="end" id="download">
+  <div class="wrap in">
+    <h2>다음 산은<br />언제 가세요?</h2>
+    <p>날짜만 정해 두면, 준비는 혼산노트가 함께합니다.</p>
+    <div class="dl-wrap" style="align-items:center;margin-top:38px;">
+      <a class="gplay" href="#download" aria-label="Google Play에서 다운로드 (출시 예정)">
+        <svg class="pico" viewBox="0 0 42 46" aria-hidden="true"><path d="M6 6 25 14.5 6 23Z" fill="#00A2FF"/><path d="M6 23 25 31.5 6 40Z" fill="#00D95F"/><path d="M6 6 38 23 25 14.5Z" fill="#FF424A"/><path d="M6 40 25 31.5 38 23Z" fill="#FFCB00"/></svg>
+        <span class="ptxt"><small>지금 다운로드</small><b>Google Play</b></span>
+      </a>
+      <span class="dl-note">Google Play 출시 예정 · iOS 순차 지원</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 푸터(사업자 정보) ════ -->
+<footer>
+  <div class="wrap foot">
+    <span class="fb">
+      <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path d="M2 26 9.6 16.4 15.2 23 22 13.4 30 26Z" fill="#fff"/><circle cx="24" cy="7.4" r="3.1" fill="#5AC968"/></svg>
+      혼산노트
+    </span>
+    <span class="biz">
+      <span><b>상호명</b> 코드에이치</span><span class="sep">·</span>
+      <span><b>사업자등록번호</b> 869-46-01411</span><span class="sep">·</span>
+      <span><b>문의</b> honsannote@gmail.com</span>
+    </span>
+    <span class="cp">© 2026 혼산노트</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav=document.getElementById('nav'), hbg=document.getElementById('bgwrap'), ticking=false;
+  function frame(){
+    ticking=false; var y=window.scrollY||0;
+    if(nav) nav.classList.toggle('solid', y>40);
+    if(hbg && !reduce) hbg.style.transform='translate3d(0,'+Math.min(y*0.16,90)+'px,0)';
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+  window.addEventListener('scroll', onScroll, {passive:true}); frame();
+
+  var revs=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window && !reduce){
+    revs.forEach(function(el){ if(el.getBoundingClientRect().top>window.innerHeight*0.92) el.classList.add('pre'); });
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); }});},{threshold:0.1});
+    revs.forEach(function(el){ if(el.classList.contains('pre')) io.observe(el); });
+  }
+
+  var pace=document.getElementById('pace');
+  if(pace){
+    var g=document.getElementById('myGrade'),t=document.getElementById('myTime'),b=document.getElementById('myBar'),pl=document.getElementById('paceLabel');
+    function apply(){
+      var v=+pace.value, min=Math.round(340-v*1.0), h=Math.floor(min/60), m=min%60;
+      t.textContent='약 '+h+'시간'+(m?' '+m+'분':'')+' 소요';
+      g.textContent=v<30?'어려움':v<60?'보통':v<86?'수월함':'아주 수월함';
+      b.style.width=Math.max(24,70-v*0.42)+'%';
+      pl.textContent=v<30?'평소보다 느긋한 편':v<60?'평소와 비슷한 편':v<86?'평소보다 빠른 편':'평소보다 많이 빠른 편';
+      pace.style.setProperty('--fill',v+'%');
+    }
+    pace.addEventListener('input',apply); apply();
+  }
+
+  var grid=document.getElementById('stampGrid'),wrap=document.getElementById('stampWrap'),countEl=document.getElementById('stampCount');
+  if(grid){
+    var TOTAL=100,FILLED=39,i; for(i=0;i<TOTAL;i++) grid.appendChild(document.createElement('i'));
+    var cells=grid.children;
+    function runFill(){
+      if(reduce){ for(i=0;i<FILLED;i++) cells[i].classList.add('on'); countEl.textContent=FILLED; return; }
+      var k=0,step=Math.max(1,Math.floor(FILLED/26));
+      var timer=setInterval(function(){
+        for(var s=0;s<step&&k<FILLED;s++,k++) cells[k].classList.add('on');
+        countEl.textContent=k;
+        if(k>=FILLED){ countEl.textContent=FILLED; clearInterval(timer); }
+      },42);
+    }
+    if('IntersectionObserver' in window){
+      var io2=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ runFill(); io2.unobserve(e.target); }});},{threshold:0.4});
+      io2.observe(wrap);
+    } else runFill();
+  }
+})();
+</script>
