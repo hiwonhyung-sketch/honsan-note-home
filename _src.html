@@ -72,7 +72,7 @@ button{font:inherit;color:inherit;background:none;border:0;}
 .hero{position:relative;overflow:hidden;background:#1b2530;}
 .hero .bgwrap{position:absolute;left:0;right:0;top:-9%;height:118%;z-index:0;will-change:transform;}
 .hero .bgwrap picture{display:block;width:100%;height:100%;}
-.hero .bg{width:100%;height:100%;object-fit:cover;object-position:50% 46%;
+.hero .bg{width:100%;height:100%;object-fit:cover;object-position:66% 50%;
   animation:heroKen 18s linear infinite alternate;will-change:transform;transform-origin:66% 46%;}
 @keyframes heroKen{from{transform:scale(1.06) translate3d(1.4%,1%,0);}to{transform:scale(1.17) translate3d(-1.6%,-1.4%,0);}}
 .hero .veil{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -222,7 +222,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
 /* ── 모바일 정비 ── */
 @media (max-width:640px){
   :root{ --s-sec:58px; --s-gap:50px; }
-  .hero .bg{object-position:58% 50%;}
+  .hero .bg{object-position:70% 50%;}
   .hero .in{min-height:84svh;padding-bottom:clamp(40px,6vh,64px);}
   .hero .eyebrow{font-size:12.5px;letter-spacing:0;padding:8px 14px 8px 12px;}
   .hero h1{font-size:clamp(38px,11vw,46px);line-height:1.08;letter-spacing:-.04em;margin-top:14px;}
@@ -260,7 +260,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
   <div class="bgwrap" id="bgwrap">
     <picture>
       <source media="(max-width:640px)" srcset="__HERO2M__" />
-      <img class="bg" src="__HERO2__" alt="산 정상 바위에 앉아 계곡과 겹겹의 산줄기를 바라보는 등산객" fetchpriority="high" />
+      <img class="bg" src="__HERO2__" alt="산 정상 바위에 서서 다도해와 겹겹의 산줄기를 바라보는 등산객" fetchpriority="high" />
     </picture>
   </div>
   <div class="veil"></div>
