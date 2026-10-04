@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="description" content="혼산노트 개인정보 처리방침 · 시행일 2026년 10월 1일" />
+<link rel="canonical" href="https://honsannote.vercel.app/privacy/" />
+<meta name="doc-source" content="honsan-native/docs/PRIVACY.md" />
+<meta name="doc-hash" content="1bc773ff9f5c2c1b" />
+<title>개인정보 처리방침 · 혼산노트</title>
+<style>
+@font-face{font-family:"Pretendard KR";src:url(/fonts/pretendard-ks.woff2) format("woff2-variations"),url(/fonts/pretendard-ks.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap;}
+:root{color-scheme:light;--paper:#F5F7F6;--raise:#FFFFFF;--ink:#14181B;--ink2:#525960;--ink3:#889097;--line:#E7EBEA;--line2:#D9DFDD;
+  --green:#2D7D34;--green-deep:#1B5722;--green-soft:#E9F6EC;--dark:#101613;
+  --sans:"Pretendard KR",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;--edge:clamp(22px,5vw,72px);}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:78px;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;word-break:keep-all;overflow-wrap:normal;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;}
+h1,h2,p,ul,ol,li{margin:0;padding:0;}
+ul,ol{list-style:none;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--green-soft);color:var(--green-deep);}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px;}
+.wrap{width:100%;margin-inline:auto;padding-inline:var(--edge);}
+.nav{position:sticky;top:0;z-index:60;background:rgba(245,247,246,.9);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);box-shadow:0 1px 0 var(--line);}
+.nav-in{display:flex;align-items:center;height:62px;max-width:1160px;}
+.brand{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:800;letter-spacing:-.04em;color:var(--ink);}
+.brand svg{width:24px;height:24px;flex:0 0 auto;}
+.nav-home{margin-left:auto;display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:700;letter-spacing:-.02em;color:var(--ink2);padding:0 4px 0 12px;}
+.nav-home:hover{color:var(--green-deep);}
+main{flex:1 0 auto;}
+.doc{max-width:760px;padding-block:clamp(40px,7vw,80px) clamp(64px,9vw,112px);}
+.dhead h1{font-size:clamp(28px,4.4vw,40px);line-height:1.25;letter-spacing:-.045em;font-weight:800;}
+.dhead .meta{margin-top:12px;font-size:14.5px;line-height:1.7;color:var(--ink2);}
+.dhead .meta b{color:var(--ink);font-weight:700;}
+.toc{margin-top:clamp(24px,4vw,34px);background:var(--raise);border:1px solid var(--line);border-radius:18px;}
+.toc summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 clamp(18px,3.4vw,26px);font-size:15px;font-weight:700;letter-spacing:-.02em;}
+.toc summary::-webkit-details-marker{display:none;}
+.toc summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--ink3);border-bottom:2px solid var(--ink3);transform:rotate(45deg);margin-top:-4px;transition:transform .2s;}
+.toc[open] summary::after{transform:rotate(-135deg);margin-top:4px;}
+.toc ol{padding:4px clamp(18px,3.4vw,26px) 18px;border-top:1px solid var(--line);}
+.toc li a{display:block;padding:7px 0;font-size:14.5px;line-height:1.5;color:var(--ink2);}
+.toc li a:hover{color:var(--green-deep);}
+.card{margin-top:clamp(20px,3vw,28px);background:var(--raise);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,4.4vw,44px);box-shadow:0 1px 2px rgba(16,22,19,.04),0 10px 30px rgba(16,22,19,.04);}
+.body h2{margin-top:2.1em;font-size:clamp(18px,2.4vw,21px);line-height:1.4;letter-spacing:-.03em;font-weight:800;}
+.body h2:first-child,.body > :first-child{margin-top:0;}
+.body p{margin-top:.8em;font-size:15.5px;line-height:1.85;color:var(--ink2);}
+.body ol,.body ul{margin-top:.8em;}
+.body li{position:relative;margin-top:.55em;padding-left:1.9em;font-size:15.5px;line-height:1.85;color:var(--ink2);}
+.body ol li::before{content:attr(value) ".";position:absolute;left:0;top:0;width:1.6em;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);}
+.body ul li::before{content:"";position:absolute;left:.55em;top:.95em;width:5px;height:5px;border-radius:50%;background:var(--ink3);}
+.tw{margin-top:1em;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.tw table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13.5px;line-height:1.65;}
+.tw th,.tw td{padding:11px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:var(--ink2);overflow-wrap:anywhere;}
+.tw thead th:first-child,.tw tbody th{width:19%;}
+.tw thead th{background:#F5F7F6;color:var(--ink);font-weight:700;white-space:nowrap;}
+.tw tbody th{color:var(--ink);font-weight:700;}
+.tw tr:last-child th,.tw tr:last-child td{border-bottom:0;}
+.after{margin-top:clamp(22px,3.4vw,30px);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13.5px;line-height:1.7;color:var(--ink3);}
+.after a{color:var(--green-deep);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.1);}
+.foot{max-width:1160px;padding-block:34px 46px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;line-height:1.8;}
+.foot .fb{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;letter-spacing:-.04em;color:#fff;}
+.biz{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;line-height:1.7;}
+.biz b{color:rgba(255,255,255,.72);font-weight:600;}
+.biz .sep{opacity:.3;}
+.fls{display:inline-flex;flex-wrap:wrap;gap:0 14px;}
+.fls a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.28);}
+.fls a:hover,.fls a[aria-current]{color:#fff;}
+.foot .cp{margin-left:auto;font-size:12px;letter-spacing:.02em;}
+@media (max-width:640px){.tw table,.tw tbody,.tw tr,.tw th,.tw td{display:block;width:auto;}.tw thead{display:none;}.tw tr{padding:12px 14px;border-bottom:1px solid var(--line);}.tw tr:last-child{border-bottom:0;}.tw th,.tw td{padding:0;border:0;}.tw tbody th{width:auto;font-size:15px;margin-bottom:6px;}.tw td{margin-top:7px;font-size:14px;}.tw td::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:var(--ink3);letter-spacing:-.01em;}}
+@media (max-width:640px){.foot .cp{margin-left:0;}.biz{flex-direction:column;gap:3px;}.biz .sep{display:none;}.body li,.body p{font-size:15px;}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+@media print{.nav,footer,.toc,.after{display:none;}body{background:#fff;}.card{border:0;box-shadow:none;padding:0;}}
+</style>
+</head>
+<body>
+<!-- 자동 생성물: build-legal.cjs ← honsan-native/docs/PRIVACY.md (해시 1bc773ff9f5c2c1b). 손으로 고치지 말 것 -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="혼산노트 홈"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 26 9.6 16.4 15.2 23 22 13.4 30 26Z" fill="currentColor"/><circle cx="24" cy="7.4" r="3.1" fill="#5AC968"/></svg>혼산노트</a>
+    <a class="nav-home" href="/">홈으로</a>
+  </div>
+</nav>
+<main>
+  <div class="wrap doc">
+    <header class="dhead">
+      <h1>혼산노트 개인정보 처리방침</h1>
+      <p class="meta"><b>시행일</b> 2026년 10월 1일 · 앱 설정 화면에서도 같은 내용을 볼 수 있어요</p>
+    </header>
+    <details class="toc"><summary>목차</summary><ol><li><a href="#s1">제1조 (개인정보의 처리 목적)</a></li><li><a href="#s2">제2조 (처리하는 개인정보의 항목)</a></li><li><a href="#s3">제3조 (만 14세 미만 아동의 개인정보 처리에 관한 사항)</a></li><li><a href="#s4">제4조 (개인정보의 처리 및 보유 기간)</a></li><li><a href="#s5">제5조 (개인정보의 파기 절차 및 방법)</a></li><li><a href="#s6">제6조 (개인정보의 제3자 제공)</a></li><li><a href="#s7">제7조 (개인정보 처리업무의 위탁)</a></li><li><a href="#s8">제8조 (위치정보의 처리)</a></li><li><a href="#s9">제9조 (통계 정보의 처리)</a></li><li><a href="#s10">제10조 (개인정보의 안전성 확보조치)</a></li><li><a href="#s11">제11조 (개인정보 자동 수집 장치의 설치·운영 및 그 거부에 관한 사항)</a></li><li><a href="#s12">제12조 (행태정보의 수집·이용·제공 및 거부 등에 관한 사항)</a></li><li><a href="#s13">제13조 (정보주체와 법정대리인의 권리·의무 및 그 행사방법)</a></li><li><a href="#s14">제14조 (개인정보 보호책임자 및 위치정보관리책임자)</a></li><li><a href="#s15">제15조 (정보주체의 권익침해에 대한 구제방법)</a></li><li><a href="#s16">제16조 (개인정보 처리방침의 변경)</a></li><li><a href="#s17">사업자 및 책임자 정보</a></li></ol></details>
+    <article class="card body">
+<p>코드에이치(서비스명 혼산노트, 이하 &quot;제공자&quot;)는 정보주체의 자유와 권리 보호를 위해 「개인정보 보호법」 및 관계 법령이 정한 바를 준수하여 적법하게 개인정보를 처리하고 안전하게 관리하고 있습니다. 이에 「개인정보 보호법」 제30조에 따라 정보주체에게 개인정보의 처리와 보호에 관한 절차 및 기준을 안내하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다. 위치정보의 처리에 관하여는 「위치정보의 보호 및 이용 등에 관한 법률」을 함께 준수합니다.</p>
+<h2 id="s1">제1조 (개인정보의 처리 목적)</h2>
+<p>제공자는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행합니다.</p>
+<ol><li value="1">계정의 관리: 이용자의 식별과 본인 확인, 기록의 소유자 확인, 각종 고지·통지 및 고충의 처리를 목적으로 개인정보를 처리합니다.</li><li value="2">서비스의 제공: 산행 경로의 기록, 정상 도달의 확인, 주변 산의 안내 및 길 찾기를 목적으로 개인정보를 처리합니다.</li><li value="3">기록 기능의 제공: 산행 일기, 통계, 도장 및 배지의 제공과 내 걸음(개인 소요시간 예측)의 계산을 목적으로 개인정보를 처리합니다.</li><li value="4">클라우드 백업: 이용자가 동의한 경우에 한정하여 기록의 백업 및 기기 간 동기화를 목적으로 개인정보를 처리합니다.</li><li value="5">통계 정보의 산출: 이용자가 동의한 경우에 한정하여 집계 정보의 산출 및 제공을 목적으로 개인정보를 처리합니다.</li><li value="6">신고 및 분쟁의 처리: 약관 위반행위의 확인, 신고의 처리, 분쟁의 조정 및 고충의 처리를 목적으로 개인정보를 처리합니다.</li><li value="7">서비스의 운영: 안정적인 운영, 장애의 대응 및 부정이용의 방지를 목적으로 개인정보를 처리합니다.</li></ol>
+<h2 id="s2">제2조 (처리하는 개인정보의 항목)</h2>
+<p>제공자는 다음의 개인정보 항목을 처리합니다.</p>
+<div class="tw"><table><thead><tr><th scope="col">구분</th><th scope="col">수집·이용 항목</th><th scope="col">수집 시점 및 방법</th><th scope="col">저장 위치</th></tr></thead><tbody><tr><th scope="row">계정 정보</th><td data-label="수집·이용 항목">구글 계정의 전자우편 주소, 이름, 프로필 사진, 계정 식별자</td><td data-label="수집 시점 및 방법">구글 계정으로 로그인할 때</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">위치 정보</th><td data-label="수집·이용 항목">위성항법장치(GPS) 좌표, 이동 경로, 고도</td><td data-label="수집 시점 및 방법">트래킹, 정상 인증, 주변 산 찾기, 길 찾기를 실행할 때</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">자택 위치</th><td data-label="수집·이용 항목">이용자가 등록한 주소 및 좌표</td><td data-label="수집 시점 및 방법">이용자가 설정에서 자택 위치를 저장할 때</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">산행 기록</th><td data-label="수집·이용 항목">날짜, 산, 코스, 소요시간, 메모, 체감 난이도</td><td data-label="수집 시점 및 방법">이용자가 기록을 저장할 때</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">사진</th><td data-label="수집·이용 항목">이용자가 선택하여 첨부한 사진</td><td data-label="수집 시점 및 방법">이용자가 기록 또는 이야기에 사진을 첨부할 때</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">사진의 촬영 위치</th><td data-label="수집·이용 항목">사진 파일에 포함된 촬영 좌표(EXIF)</td><td data-label="수집 시점 및 방법">이용자가 사진을 선택할 때</td><td data-label="저장 위치">기기(좌표만 확인하며 원본 파일은 변경하지 않습니다)</td></tr><tr><th scope="row">건강·운동 기록</th><td data-label="수집·이용 항목">운동 종류, 시작 시각, 소요시간, 거리, 고도 및 제공되는 경우 이동 경로</td><td data-label="수집 시점 및 방법">이용자가 건강 앱의 운동 기록을 가져오는 기능을 실행하고 해당 앱에서 접근을 허용한 경우</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">활동기록 파일</th><td data-label="수집·이용 항목">이용자가 선택한 파일(GPX·TCX·FIT)에 포함된 이동 경로, 시각, 거리, 고도, 심박수, 소모 열량</td><td data-label="수집 시점 및 방법">이용자가 다른 앱에서 내보낸 활동기록 파일을 선택하여 가져올 때</td><td data-label="저장 위치">기기, 클라우드(동의 시)</td></tr><tr><th scope="row">앱 설정</th><td data-label="수집·이용 항목">글씨 크기, 알림, 지도 종류 등 환경설정 값</td><td data-label="수집 시점 및 방법">이용자가 설정을 변경할 때</td><td data-label="저장 위치">기기</td></tr><tr><th scope="row">접속 기록</th><td data-label="수집·이용 항목">접속 아이피(IP) 주소, 접속 일시</td><td data-label="수집 시점 및 방법">서버와 통신하는 과정에서 자동으로 생성</td><td data-label="저장 위치">제공자가 이용하는 클라우드 서비스의 서버</td></tr></tbody></table></div>
+<ol><li value="1">제공자는 주민등록번호 등 고유식별정보를 수집하지 않습니다.</li><li value="2">제공자는 이용자의 개인정보를 판매하지 않으며, 이용자가 남긴 기록, 사진 및 위치 정보를 광고에 이용하지 않습니다.</li><li value="3">이용자가 클라우드 백업·동기화에 동의하지 않은 경우, 위 표의 정보 중 클라우드에 저장되는 항목은 이용자의 기기에만 저장됩니다.</li></ol>
+<h2 id="s3">제3조 (만 14세 미만 아동의 개인정보 처리에 관한 사항)</h2>
+<ol><li value="1">서비스는 만 14세 미만의 아동을 대상으로 하지 않으며, 만 14세 미만의 아동은 서비스를 이용할 수 없습니다.</li><li value="2">제공자는 만 14세 미만 아동의 개인정보를 수집하지 않으며, 만 14세 미만 아동의 개인정보가 수집된 사실을 알게 된 경우에는 지체 없이 해당 개인정보를 파기합니다.</li></ol>
+<h2 id="s4">제4조 (개인정보의 처리 및 보유 기간)</h2>
+<ol><li value="1">제공자는 법령에 따른 개인정보 보유·이용 기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용 기간 내에서 개인정보를 처리·보유합니다.</li><li value="2">각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.</li></ol>
+<div class="tw"><table><thead><tr><th scope="col">구분</th><th scope="col">보유 및 이용 기간</th></tr></thead><tbody><tr><th scope="row">기기에 저장된 정보</th><td data-label="보유 및 이용 기간">이용자가 해당 정보를 삭제하거나 서비스를 삭제할 때까지</td></tr><tr><th scope="row">클라우드에 백업된 정보</th><td data-label="보유 및 이용 기간">이용자가 해당 기록을 삭제하거나 회원 탈퇴를 완료할 때까지</td></tr><tr><th scope="row">접속 아이피 주소 및 접속 일시</th><td data-label="보유 및 이용 기간">제공자가 이용하는 클라우드 서비스의 로그 보존 정책에서 정한 기간</td></tr></tbody></table></div>
+<ol><li value="3">백업을 끄는 것만으로는 삭제되지 않습니다. 새로운 정보의 전송이 멈출 뿐 이미 저장된 백업본은 본인 계정에 남으며, 백업을 다시 설정하면 종전의 백업본과 이어집니다. 백업본의 삭제를 원하는 경우에는 제5조의 방법에 따릅니다.</li><li value="4">이용자가 로그아웃하는 경우 기기에 저장된 로그인 정보는 삭제되며, 클라우드에 저장된 정보는 다시 로그인하면 복원됩니다.</li></ol>
+<h2 id="s5">제5조 (개인정보의 파기 절차 및 방법)</h2>
+<ol><li value="1">제공자는 개인정보 보유 기간의 경과, 처리 목적의 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.</li><li value="2">이용자는 서비스의 설정 화면에서 회원 탈퇴를 선택하여 계정 및 클라우드에 저장된 본인의 정보를 직접 삭제할 수 있으며, 본 방침 하단에 기재된 전자우편 주소로 삭제를 요청할 수도 있습니다. 제공자는 요청을 받은 경우 지체 없이 처리합니다.</li><li value="3">파기 절차는 다음과 같습니다. 제공자는 파기 사유가 발생한 개인정보를 선정하고, 개인정보 보호책임자의 승인을 받아 해당 개인정보를 파기합니다.</li><li value="4">파기 방법은 다음과 같습니다. 제공자는 전자적 파일의 형태로 기록·저장된 개인정보는 기록을 재생할 수 없는 방법으로 파기하며, 종이에 출력된 개인정보는 분쇄하거나 소각하여 파기합니다.</li><li value="5">이용자는 구글 계정의 보안 설정에서 서비스와의 연결을 해제할 수 있습니다. 연결의 해제는 계정 연동의 중단을 의미하며 개인정보의 파기와는 구분되므로, 파기를 원하는 경우에는 제2항의 방법에 따릅니다.</li></ol>
+<h2 id="s6">제6조 (개인정보의 제3자 제공)</h2>
+<ol><li value="1">제공자는 이용자의 개인정보를 제1조에서 명시한 범위 내에서만 처리하며, 이용자의 동의가 있거나 법령에 특별한 규정이 있는 경우 등 「개인정보 보호법」 제17조 및 제18조에 해당하는 경우에만 제3자에게 제공합니다.</li><li value="2">수사기관 등이 법령에 정한 절차와 방법에 따라 자료의 제출을 요구하는 경우 제공자는 관계 법령에 따릅니다.</li><li value="3">이용자가 다음의 기능을 직접 실행하는 경우에 한정하여, 해당 기능의 수행에 필요한 정보가 다음의 외부 서비스로 전달됩니다.</li></ol>
+<div class="tw"><table><thead><tr><th scope="col">제공받는 자</th><th scope="col">제공 항목</th><th scope="col">제공 목적</th><th scope="col">제공 시점</th></tr></thead><tbody><tr><th scope="row">Google LLC</th><td data-label="제공 항목">로그인 인증 요청</td><td data-label="제공 목적">구글 계정을 이용한 로그인</td><td data-label="제공 시점">이용자가 로그인할 때</td></tr><tr><th scope="row">Google LLC(Google 캘린더)</th><td data-label="제공 항목">산 이름, 코스, 지역, 날짜, 메모</td><td data-label="제공 목적">이용자 본인의 캘린더에 일정 저장</td><td data-label="제공 시점">이용자가 일정 저장을 실행할 때</td></tr><tr><th scope="row">Google LLC(YouTube)</th><td data-label="제공 항목">영상 조회 요청, 접속 아이피 주소</td><td data-label="제공 목적">산 관련 영상의 표시</td><td data-label="제공 시점">해당 화면을 열 때</td></tr><tr><th scope="row">카카오</th><td data-label="제공 항목">목적지 좌표, 검색어</td><td data-label="제공 목적">지도의 표시 및 길 찾기</td><td data-label="제공 시점">이용자가 지도 또는 길 찾기를 실행할 때</td></tr><tr><th scope="row">지도 타일 제공자(OpenFreeMap, MapTiler)</th><td data-label="제공 항목">조회 중인 지도 영역의 좌표, 접속 아이피 주소</td><td data-label="제공 목적">지도 화면의 표시</td><td data-label="제공 시점">지도를 표시할 때</td></tr><tr><th scope="row">고도 정보 제공자(Open-Meteo, Amazon Web Services 공개 데이터)</th><td data-label="제공 항목">좌표</td><td data-label="제공 목적">코스 고도 정보의 표시</td><td data-label="제공 시점">고도 정보를 조회할 때</td></tr><tr><th scope="row">기상청, 한국환경공단(공공데이터포털)</th><td data-label="제공 항목">지역 좌표</td><td data-label="제공 목적">날씨 및 대기질 정보의 조회</td><td data-label="제공 시점">해당 정보를 조회할 때</td></tr><tr><th scope="row">한국관광공사, 위키미디어재단</th><td data-label="제공 항목">산 이름, 이미지 조회 요청</td><td data-label="제공 목적">산 사진의 표시</td><td data-label="제공 시점">해당 화면을 열 때</td></tr><tr><th scope="row">외부 인공지능 서비스(OpenAI, Anthropic, Google LLC)</th><td data-label="제공 항목">산 이름과 코스 등이 포함된 질문 문장(서비스에 따라 전달되지 않을 수 있습니다)</td><td data-label="제공 목적">이용자가 선택한 서비스에서의 답변 확인</td><td data-label="제공 시점">이용자가 해당 서비스를 실행하여 여는 때</td></tr></tbody></table></div>
+<ol><li value="4">다음은 이용자가 따로 실행하지 않아도, 앱이 켜져 있는 동안 자동으로 전달됩니다.</li></ol>
+<div class="tw"><table><thead><tr><th scope="col">제공받는 자</th><th scope="col">제공 항목</th><th scope="col">제공 목적</th><th scope="col">제공 시점</th></tr></thead><tbody><tr><th scope="row">Amazon Web Services(공개 지형 자료)</th><td data-label="제공 항목">산행 기록 경로가 지나는 지형 타일의 위치(약 2km 칸), 접속 아이피 주소</td><td data-label="제공 목적">내 산행 기록의 오르막 계산(내 걸음)</td><td data-label="제공 시점">경로가 담긴 산행 기록마다 처음 한 번. 앱을 다시 설치하거나, 다른 계정으로 바꾸거나, 다른 기기에서 쓰거나, 기록의 경로가 바뀌거나, 앞선 계산이 실패했을 때(앱을 다시 열면) 다시</td></tr></tbody></table></div>
+<ol><li value="5">제3항과 제4항에 따라 전달된 정보의 처리에 관하여는 각 서비스가 정한 개인정보 처리방침이 적용됩니다.</li></ol>
+<h2 id="s7">제7조 (개인정보 처리업무의 위탁)</h2>
+<ol><li value="1">제공자는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.</li></ol>
+<div class="tw"><table><thead><tr><th scope="col">위탁받는 자(수탁자)</th><th scope="col">위탁하는 업무의 내용</th></tr></thead><tbody><tr><th scope="row">Supabase Inc.</th><td data-label="위탁하는 업무의 내용">이용자가 동의한 경우에 한정한 클라우드 백업·동기화 정보의 저장 및 관리, 집계 정보의 제공</td></tr></tbody></table></div>
+<ol><li value="2">위탁하는 정보가 저장되는 지역은 대한민국(서울)입니다.</li><li value="3">제공자는 위탁계약 체결 시 「개인정보 보호법」 제26조에 따라 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리·감독, 손해배상 등 책임에 관한 사항을 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.</li><li value="4">위탁업무의 내용이나 수탁자가 변경될 경우에는 지체 없이 본 개인정보 처리방침을 통하여 공개하겠습니다.</li></ol>
+<h2 id="s8">제8조 (위치정보의 처리)</h2>
+<ol><li value="1">제공자는 이용자가 개인위치정보의 수집·이용에 동의하고 기기의 위치 권한을 허용한 경우에 한정하여 위치정보를 수집합니다.</li><li value="2">위치정보는 산행 경로의 기록, 정상 도달의 확인, 주변 산의 안내, 길 찾기 및 내 걸음(개인 소요시간 예측)을 위한 오르막 계산의 목적으로만 이용하며, 그 밖의 목적으로는 이용하지 않습니다.</li><li value="3">트래킹이 실행 중인 동안에는 화면이 꺼진 상태에서도 위치가 기록될 수 있으며, 제공자는 기록 중이라는 사실을 상시 알림으로 표시합니다.</li><li value="4">산행 기록에 포함된 위치정보의 보유 기간은 제4조에 따릅니다. 트래킹 중 일시적으로 이용하는 현재 위치는 해당 화면을 벗어나면 보관하지 않습니다.</li><li value="5">개인위치정보주체는 개인위치정보의 수집·이용·제공에 대한 동의의 전부 또는 일부를 유보할 수 있고 언제든지 그 동의를 철회할 수 있으며, 수집·이용·제공의 일시적인 중지를 요구할 수 있습니다.</li><li value="6">개인위치정보주체는 자신에 대한 위치정보 이용·제공사실 확인자료의 열람 또는 고지를 요구할 수 있으며, 그 자료에 오류가 있는 경우에는 정정을 요구할 수 있습니다.</li><li value="7">제5항 및 제6항에 따른 요구는 본 방침 하단에 기재된 전자우편 주소로 할 수 있으며, 제공자는 정당한 사유 없이 이를 거절하지 않습니다.</li><li value="8">8세 이하의 아동, 피성년후견인 등의 생명 또는 신체의 보호를 위하여 개인위치정보의 수집·이용 또는 제공에 동의하려는 경우에는 「위치정보의 보호 및 이용 등에 관한 법률」에 따라 보호의무자의 동의가 있어야 하며, 보호의무자는 개인위치정보주체의 권리를 모두 가집니다. 이 경우 보호의무자는 「위치정보의 보호 및 이용 등에 관한 법률 시행령」 제27조에 따라 서면동의서에 보호의무자임을 증명하는 서면을 첨부하여 본 방침 하단에 기재된 전자우편 주소로 제출하여야 합니다.</li></ol>
+<h2 id="s9">제9조 (통계 정보의 처리)</h2>
+<ol><li value="1">제공자는 이용자가 클라우드 백업과 별도로 통계 기여에 동의한 경우에 한정하여, 산과 코스, 방문한 연·월, 난이도와 소요시간의 구간 값 및 이용자의 계정 식별자를 통계 산출의 목적으로 전송받습니다.</li><li value="2">위성항법장치 경로, 사진, 메모 및 방문한 일자는 전송하지 않습니다.</li><li value="3">공개되는 집계 결과에는 개인을 식별할 수 있는 정보가 포함되지 않습니다. 다만 기여 기록 자체는 본인 계정에 연결되어 저장되며, 이는 「누가 보냈는지 서버도 모른다」는 뜻이 아닙니다.</li><li value="4">집계 결과는 서로 다른 이용자 3명 이상이 기여한 산과 코스에 대해서만 산출됩니다.</li><li value="5">통계 기여에 대한 동의는 설정의 「함께 만드는 통계」에서 언제든지 철회할 수 있습니다. 기여 기록을 보낸 적이 있는 기기에서 철회하면, 다음 동기화 때 그 계정으로 보낸 기여 기록이 서버에서 모두 삭제됩니다. 동의는 기기마다 따로 설정되므로, 동의가 켜져 있는 다른 기기가 있으면 그 기기에서 기여 기록이 다시 전송될 수 있습니다. 전송을 모두 멈추려면 모든 기기에서 철회하여야 합니다.</li></ol>
+<h2 id="s10">제10조 (개인정보의 안전성 확보조치)</h2>
+<p>제공자는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
+<ol><li value="1">관리적 조치: 개인정보에 접근할 수 있는 권한을 서비스의 운영에 필요한 최소한의 범위로 제한하고 있습니다.</li><li value="2">접근 범위: 운영자는 신고의 처리, 장애의 대응, 법령상 의무의 이행 등 서비스의 운영에 꼭 필요한 경우에만 저장된 정보에 접근하며, 그 밖의 목적으로는 열람하지 않습니다.</li><li value="3">기술적 조치: 로그인 토큰은 기기의 보안 저장 영역에 저장합니다.</li><li value="4">기술적 조치: 통신 구간은 HTTPS로 암호화하며, 클라우드에 저장되는 정보는 저장 구간에서도 암호화합니다.</li><li value="5">접근 통제: 클라우드에 저장된 정보는 본인의 계정으로만 접근할 수 있도록 서버에서 접근을 제한하고 있으므로 다른 이용자는 접근할 수 없습니다.</li><li value="6">공개 게시물의 보호: 다른 이용자에게 공개되는 게시물에 첨부되는 사진은 촬영 위치 정보가 제거된 사본으로 변환한 후에 전송하며, 변환에 실패한 경우에는 공개 게시를 차단합니다.</li></ol>
+<h2 id="s11">제11조 (개인정보 자동 수집 장치의 설치·운영 및 그 거부에 관한 사항)</h2>
+<ol><li value="1">서비스는 이용자의 행태정보를 수집하는 분석 도구 또는 광고용 소프트웨어 개발 도구를 설치·운영하지 않습니다.</li><li value="2">서비스는 기기의 광고 식별자(ADID, IDFA)를 수집하지 않습니다.</li><li value="3">서비스 안에서 지도 등 외부 웹 화면을 여는 경우 해당 서비스가 자체적으로 쿠키를 사용할 수 있으며, 이용자는 기기의 브라우저 설정에서 쿠키의 허용과 차단을 설정할 수 있습니다.</li></ol>
+<h2 id="s12">제12조 (행태정보의 수집·이용·제공 및 거부 등에 관한 사항)</h2>
+<ol><li value="1">제공자는 서비스를 무료로 제공하기 위하여 서비스 안에 광고를 게재할 수 있습니다. 현재 제공자는 광고를 게재하지 않으며, 광고를 위한 행태정보를 수집·이용하거나 제3자에게 제공하지 않습니다.</li><li value="2">제공자가 맞춤형 광고를 도입하는 경우에는 수집하는 행태정보의 항목, 수집 방법, 수집 목적과 보유·이용 기간 및 광고 사업자를 본 개인정보 처리방침에 미리 반영하여 공개하고 그 사실을 알립니다.</li><li value="3">제공자는 이용자가 서비스에 남긴 기록, 사진 및 위치 정보를 광고에 이용하지 않습니다.</li><li value="4">이용자는 기기의 설정에서 맞춤형 광고를 제한할 수 있습니다. 안드로이드는 설정의 개인정보 보호 중 광고 항목에서, 아이폰은 설정의 개인정보 보호 및 보안 중 추적 항목에서 설정할 수 있습니다.</li><li value="5">맞춤형 광고를 제한하더라도 서비스의 기본적인 기능은 그대로 이용할 수 있습니다.</li></ol>
+<h2 id="s13">제13조 (정보주체와 법정대리인의 권리·의무 및 그 행사방법)</h2>
+<ol><li value="1">정보주체는 제공자에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 및 동의 철회 등을 요구할 수 있습니다.</li><li value="2">권리 행사는 「개인정보 보호법 시행령」 제41조제2항에 따라 서면, 전자우편 등을 통하여 하실 수 있으며, 제공자는 이에 대해 지체 없이 조치하겠습니다.</li><li value="3">이용자는 서비스 안에서 자신의 기록을 직접 열람하고 정정하거나 삭제할 수 있습니다. 해당 내용은 기기에 먼저 반영되며, 클라우드에 저장된 정보에는 다음 동기화 시 반영됩니다.</li><li value="4">이용자는 기기 설정에서 권한을 철회하거나, 클라우드 백업을 해제하여 새로운 정보의 전송을 중단하거나, 로그아웃 또는 서비스의 삭제를 통하여 처리의 정지를 요구할 수 있습니다.</li><li value="5">권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수도 있습니다. 이 경우 「개인정보 처리 방법에 관한 고시」 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</li><li value="6">정보주체가 개인정보 열람 및 처리정지를 요구할 권리는 「개인정보 보호법」 제35조제4항 및 제37조제2항에 의하여 제한될 수 있습니다.</li><li value="7">제공자는 열람 등의 요구를 거절하는 경우에는 그 사유와 이의제기 방법을 정보주체에게 함께 알립니다.</li><li value="8">제공자는 권리 행사를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.</li><li value="9">권리 행사의 접수 및 처리는 제14조의 개인정보 보호책임자가 담당합니다.</li></ol>
+<h2 id="s14">제14조 (개인정보 보호책임자 및 위치정보관리책임자)</h2>
+<ol><li value="1">제공자는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 개인정보 보호책임자를 지정하고 있으며, 「위치정보의 보호 및 이용 등에 관한 법률」에 따라 위치정보관리책임자를 함께 지정하고 있습니다.</li><li value="2">개인정보 보호책임자 및 위치정보관리책임자의 성명과 연락처는 본 방침 하단의 사업자 및 책임자 정보에 기재되어 있습니다.</li><li value="3">정보주체는 서비스를 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 전자우편(honsannote@gmail.com)으로 접수할 수 있으며, 제공자는 접수한 날부터 영업일 기준 3일 이내에 답변하는 것을 원칙으로 합니다.</li><li value="4">정보주체는 개인정보 보호와 관련한 사항을 개인정보 보호책임자에게 신고할 수 있으며, 제공자는 이에 대하여 지체 없이 답변 및 처리해 드릴 것입니다.</li></ol>
+<h2 id="s15">제15조 (정보주체의 권익침해에 대한 구제방법)</h2>
+<p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보 분쟁조정위원회, 한국인터넷진흥원 개인정보침해 신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.</p>
+<div class="tw"><table><thead><tr><th scope="col">기관</th><th scope="col">전화</th><th scope="col">누리집</th></tr></thead><tbody><tr><th scope="row">개인정보 분쟁조정위원회</th><td data-label="전화">국번 없이 1833-6972</td><td data-label="누리집">www.kopico.go.kr</td></tr><tr><th scope="row">개인정보침해 신고센터</th><td data-label="전화">국번 없이 118</td><td data-label="누리집">privacy.kisa.or.kr</td></tr><tr><th scope="row">경찰청</th><td data-label="전화">국번 없이 182</td><td data-label="누리집">ecrm.police.go.kr</td></tr></tbody></table></div>
+<h2 id="s16">제16조 (개인정보 처리방침의 변경)</h2>
+<ol><li value="1">이 개인정보 처리방침은 본 방침 하단에 기재된 시행일부터 적용됩니다.</li><li value="2">법령, 정책 또는 서비스의 내용이 변경되어 이 개인정보 처리방침의 내용을 추가·삭제 또는 정정하는 경우에는 변경되는 방침의 시행일 7일 전부터 서비스 안에 그 사실과 변경된 내용을 공지합니다.</li><li value="3">제2항에도 불구하고 정보주체에게 불리한 내용으로 변경하는 경우에는 시행일 30일 전부터 공지합니다.</li><li value="4">변경되기 전의 개인정보 처리방침은 서비스의 개인정보 처리방침 화면에서 확인하실 수 있습니다.</li></ol>
+<p>---</p>
+<h2 id="s17">사업자 및 책임자 정보</h2>
+<ul><li>상호: 코드에이치</li><li>대표: 오수연</li><li>사업자등록번호: 869-46-01411</li><li>개인정보 보호책임자: 차원형</li><li>위치정보관리책임자: 차원형</li><li>전자우편: honsannote@gmail.com</li><li>시행일: 2026년 10월 1일</li></ul>
+    </article>
+    <p class="after"><span>문의 honsannote@gmail.com</span><a href="/terms/">이용약관 보기</a></p>
+  </div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <span class="fb"><svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path d="M2 26 9.6 16.4 15.2 23 22 13.4 30 26Z" fill="#fff"/><circle cx="24" cy="7.4" r="3.1" fill="#5AC968"/></svg>혼산노트</span>
+    <span class="biz">
+      <span><b>상호명</b> 코드에이치</span><span class="sep">·</span>
+      <span><b>사업자등록번호</b> 869-46-01411</span><span class="sep">·</span>
+      <span><b>문의</b> honsannote@gmail.com</span>
+    </span>
+    <span class="fls"><a href="/privacy/" aria-current="page">개인정보 처리방침</a><a href="/terms/">이용약관</a></span>
+    <span class="cp">© 2026 혼산노트</span>
+  </div>
+</footer>
+</body>
+</html>

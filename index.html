@@ -207,6 +207,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
 .biz b{color:rgba(255,255,255,.72);font-weight:600;}
 .biz .sep{opacity:.3;}
 .foot .cp{margin-left:auto;font-size:12px;letter-spacing:.02em;}
+.fls{display:inline-flex;flex-wrap:wrap;gap:0 14px;}
+.fls a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.28);}
+.fls a:first-child{color:#fff;font-weight:700;}
+.fls a:hover{color:#fff;}
 @media (max-width:640px){.foot .cp{margin-left:0;} .biz{flex-direction:column;gap:3px;} .biz .sep{display:none;}}
 
 /* ── 데스크톱 미세 인터랙션 ── */
@@ -446,6 +450,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
       <span><b>사업자등록번호</b> 869-46-01411</span><span class="sep">·</span>
       <span><b>문의</b> honsannote@gmail.com</span>
     </span>
+    <span class="fls"><a href="/privacy/">개인정보 처리방침</a><a href="/terms/">이용약관</a></span>
     <span class="cp">© 2026 혼산노트</span>
   </div>
 </footer>
