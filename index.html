@@ -7,6 +7,9 @@
 <meta name="description" content="전국 4,600여 개 산과 등산 코스를 공식 데이터로. 오늘 가기 좋은 산 추천, 내 맞춤 난이도, 3D 코스 미리보기, 산행 일기까지. 혼자 산에 가는 사람을 위한 앱, 혼산노트." />
 <meta name="theme-color" content="#101613" />
 <link rel="canonical" href="https://honsannote.vercel.app/" />
+<link rel="preload" as="image" href="/img/hero-m.webp" type="image/webp" media="(max-width:640px)" fetchpriority="high" />
+<link rel="preload" as="image" href="/img/hero.webp" type="image/webp" media="(min-width:641px)" fetchpriority="high" />
+<script>document.documentElement.className="js";</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta property="og:type" content="website" />
@@ -160,6 +163,14 @@ button{font:inherit;color:inherit;background:none;border:0;}
   background:radial-gradient(circle at 40% 35%,#1b2833,#000 70%);box-shadow:0 0 0 1.4px rgba(255,255,255,.12);}
 .phone-view img{width:100%;height:auto;display:block;}
 
+/* ── 첫 화면 로딩: 흐린 미리보기 → 사진이 준비되면 부드럽게 ── */
+.hero .bgwrap{background:#1b2530 url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAMACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDpp5IlbDKc+1VZJrcfe3D8K5ue/uiuTM3PWoPPlcDLnn0NUnZEPVnRtdWm7GW/Kqz6lbGANCpLsPlBHesaNRwx5JyTz6CnqdsiIAMHv3rOdey0KjT7n//Z) 66% 50%/cover no-repeat;}
+@media (max-width:640px){.hero .bgwrap{background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAXABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbMHtTfs+e1U5NUlH8Sqffmoxqr9DIp/Cui8jC0TRFt9KKwrfWJ0MozvXzG2ljniip533K5V2KBQyOuPlBOAfWpkCkOd7bIx8ze9FFccZycrXNuVCHcv8Aq32KeQCOeaKKKxbLP//Z);background-position:94% 50%;}}
+.js .hero .bg,.js .phone-view img{opacity:0;transition:opacity .7s ease;}
+.js .hero .bg.ready,.js .phone-view img.ready{opacity:1;}
+.phone-view{aspect-ratio:560/1197;background:linear-gradient(100deg,#e3e8e6 30%,#eef2f0 50%,#e3e8e6 70%) 0 0/200% 100%;animation:shimmer 1.4s linear infinite;}
+@keyframes shimmer{to{background-position:-200% 0;}}
+
 /* ── 인터랙션: 내 맞춤 난이도 ── */
 .calc{background:var(--raise);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.6vw,34px);box-shadow:0 30px 60px rgba(18,26,30,.07);width:100%;}
 .calc-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
@@ -274,6 +285,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
   html{scroll-behavior:auto;}
 }
 </style>
+<noscript><style>.hero .bg,.phone-view img{opacity:1 !important;}.phone-view{animation:none;}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
@@ -505,6 +517,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
     var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); }});},{threshold:0.1});
     revs.forEach(function(el){ if(el.classList.contains('pre')) io.observe(el); });
   }
+
+  [].slice.call(document.querySelectorAll('.hero .bg,.phone-view img')).forEach(function(im){
+    function ok(){ im.classList.add('ready'); }
+    if(im.complete && im.naturalWidth) ok(); else { im.addEventListener('load',ok); im.addEventListener('error',ok); }
+  });
 
   var pace=document.getElementById('pace');
   if(pace){
