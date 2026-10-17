@@ -170,7 +170,7 @@ function page(d, hash, parsed, effective) {
   const h2s = parsed.blocks.filter((b) => b.t === 'h2');
   const toc = '<ol>' + h2s.map((h) => '<li><a href="#' + h.id + '">' + esc(h.text) + '</a></li>').join('') + '</ol>';
   const isP = d.key === 'privacy';
-  const links = '<span class="fls"><a href="/privacy/"' + (isP ? ' aria-current="page"' : '') + '>개인정보 처리방침</a><a href="/terms/"' + (!isP ? ' aria-current="page"' : '') + '>이용약관</a></span>';
+  const links = '<span class="fls"><a href="/notice/">공지사항</a><a href="/privacy/"' + (isP ? ' aria-current="page"' : '') + '>개인정보 처리방침</a><a href="/terms/"' + (!isP ? ' aria-current="page"' : '') + '>이용약관</a></span>';
   const meta = (effective ? '<b>시행일</b> ' + esc(effective) + ' · ' : '') + '앱 설정 화면에서도 같은 내용을 볼 수 있어요';
   return [
     '<!doctype html>',
