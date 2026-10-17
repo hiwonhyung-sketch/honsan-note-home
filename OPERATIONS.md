@@ -9,6 +9,7 @@
 - 소스: GitHub `hiwonhyung-sketch/honsan-note-home` (main)
 - 호스팅: Vercel (원본 저장소 Import · push 시 자동 재배포)
 - 배포 방식: 클로드가 수정 → `git push` → Vercel 자동 배포
+- 홈페이지 수정 방법: `_src.html` 을 고친 뒤 `node build-home.cjs` 로 `index.html` 을 다시 만든다(`--check` 로 일치 확인). 이미지는 `img/*.webp` 별도 파일, 글꼴만 `_assets.json` 에서 인라인.
 
 ## 1. 모니터링 3중 그물
 | # | 잡는 것 | 도달처 | 도구 | 누가 |
