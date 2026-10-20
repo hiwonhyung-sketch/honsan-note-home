@@ -292,6 +292,16 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
   .end .in{padding-block:clamp(72px,16vw,112px);}
   .end p{margin-top:18px;}
 }
+/* ── 맨 위로 버튼 (PC 전용) ── */
+.totop{display:none;}
+@media (min-width:721px){
+  .totop{position:fixed;right:28px;bottom:28px;z-index:60;display:flex;align-items:center;justify-content:center;
+    width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--green-deep);
+    border:1px solid var(--line2);box-shadow:0 6px 20px rgba(20,24,27,.12);
+    opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease,visibility .25s,background .2s,color .2s;}
+  .totop.show{opacity:1;visibility:visible;transform:none;}
+  .totop:hover{background:var(--green);color:#fff;border-color:var(--green);}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;}
   .hero h1 span > i,.hero .sub,.hero .status,.reveal.pre{transform:none;opacity:1;}
@@ -517,15 +527,18 @@ s.srcset="/img/hero/"+k+"-m.webp";i.src="/img/hero/"+k+".webp";})();</script>
     <span class="cp">© 2026 혼산노트</span>
   </div>
 </footer>
+<a class="totop" id="totop" href="#top" aria-label="맨 위로 이동"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
 <script>
 (function(){
   "use strict";
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var nav=document.getElementById('nav'), hbg=document.getElementById('bgwrap'), ticking=false;
+  var totop=document.getElementById('totop');
   function frame(){
     ticking=false; var y=window.scrollY||0;
     if(nav) nav.classList.toggle('solid', y>40);
+    if(totop) totop.classList.toggle('show', y>window.innerHeight*0.8);
     if(hbg && !reduce) hbg.style.transform=window.innerWidth>640?'translate3d(0,'+Math.min(y*0.16,90)+'px,0)':'';
   }
   function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
