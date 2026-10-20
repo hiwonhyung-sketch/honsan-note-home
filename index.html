@@ -13,7 +13,7 @@
 (function(){var k="";try{var d=new Date(),M=d.getMonth()+1,h=d.getHours();
 var s=M>=3&&M<=5?"spring":M>=6&&M<=8?"summer":M>=9&&M<=11?"autumn":"winter";
 var t=h>=4&&h<7?"dawn":h>=7&&h<17?"day":h>=17&&h<21?"evening":"night";k=s+"-"+t;
-var READY={};/* 검수 재진행 중: 전 조합 원본 히어로 표시 *//* 검수 통과분만 노출, 나머지는 원본 히어로 */
+var READY={"spring-dawn":1};/* 검수 통과분만 노출, 나머지는 원본 히어로 */
 window.__heroReady=READY;if(!READY[k])k="";
 var q=/[?&]hero=((?:spring|summer|autumn|winter)-(?:dawn|day|evening|night))(?:&|$)/.exec(location.search);if(q&&READY[q[1]])k=q[1];}catch(e){k="";}
 window.__hero=k;var a=k?"/img/hero/"+k:"/img/hero",b=k?"/img/hero/"+k+"-m.webp":"/img/hero-m.webp";
@@ -333,7 +333,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);border-top:1px solid rg
       <img class="bg" id="heroImg" width="2560" height="1280" alt="산 정상 바위에 서서 다도해와 겹겹의 산줄기를 바라보는 등산객" fetchpriority="high" />
     </picture>
     <script>(function(){var k=window.__hero,i=document.getElementById("heroImg"),s=document.getElementById("heroSrc"),w=document.getElementById("bgwrap");
-var C={"spring-dawn":["#ac97b4","#4c4448"],"spring-day":["#b2d5ee","#7e8071"],"spring-evening":["#d7a16f","#704d2b"],"spring-night":["#11253b","#0e1217"],"summer-dawn":["#dcbba1","#5f5642"],"summer-day":["#75abe1","#3a5f55"],"summer-evening":["#c78665","#594429"],"summer-night":["#0f2951","#0c1826"],"autumn-dawn":["#9482ba","#5c4159"],"autumn-day":["#81b5db","#6b5e5b"],"autumn-evening":["#c69164","#693821"],"autumn-night":["#1b293a","#17151a"],"winter-dawn":["#a8acce","#475986"],"winter-day":["#afcfee","#77879c"],"winter-evening":["#8d7575","#4e3f4f"],"winter-night":["#182742","#1c273d"]};function fb(){s.srcset="/img/hero-m.webp";i.src="/img/hero.webp";w.style.backgroundImage="";}
+var C={"spring-dawn":["#b59ba3","#4f474c"],"spring-day":["#b2d5ee","#7e8071"],"spring-evening":["#d7a16f","#704d2b"],"spring-night":["#11253b","#0e1217"],"summer-dawn":["#dcbba1","#5f5642"],"summer-day":["#75abe1","#3a5f55"],"summer-evening":["#c78665","#594429"],"summer-night":["#0f2951","#0c1826"],"autumn-dawn":["#9482ba","#5c4159"],"autumn-day":["#81b5db","#6b5e5b"],"autumn-evening":["#c69164","#693821"],"autumn-night":["#1b293a","#17151a"],"winter-dawn":["#a8acce","#475986"],"winter-day":["#afcfee","#77879c"],"winter-evening":["#8d7575","#4e3f4f"],"winter-night":["#182742","#1c273d"]};function fb(){s.srcset="/img/hero-m.webp";i.src="/img/hero.webp";w.style.backgroundImage="";}
 if(!k){fb();return;}i.addEventListener("error",function(){if(!i.getAttribute("data-fb")){i.setAttribute("data-fb","1");fb();}});
 if(C[k])w.style.backgroundImage="linear-gradient(180deg,"+C[k][0]+","+C[k][1]+")";
 s.srcset="/img/hero/"+k+"-m.webp";i.src="/img/hero/"+k+".webp";})();</script>
