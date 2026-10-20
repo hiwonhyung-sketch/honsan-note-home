@@ -12,7 +12,7 @@
 <script>/* 히어로: 방문자 기기의 날짜(계절)·시각(시간대)에 맞는 이미지를 고른다. 실패하면 기본 히어로로 대체 */
 (function(){var k="";try{var d=new Date(),M=d.getMonth()+1,h=d.getHours();
 var s=M>=3&&M<=5?"spring":M>=6&&M<=8?"summer":M>=9&&M<=11?"autumn":"winter";
-var t=h>=4&&h<7?"dawn":h>=7&&h<17?"day":h>=17&&h<21?"evening":"night";k=s+"-"+t;
+var t=h>=4&&h<7?"dawn":h>=7&&h<17?"day":h>=17&&h<21?"evening":"night";k="";/* 계절 전환 일시 중지: 원본 히어로 사용 */
 var q=/[?&]hero=((?:spring|summer|autumn|winter)-(?:dawn|day|evening|night))(?:&|$)/.exec(location.search);if(q)k=q[1];}catch(e){k="";}
 window.__hero=k;var a=k?"/img/hero/"+k:"/img/hero",b=k?"/img/hero/"+k+"-m.webp":"/img/hero-m.webp";
 document.write('<link rel="preload" as="image" href="'+b+'" type="image/webp" media="(max-width:640px)" fetchpriority="high">'+
