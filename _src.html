@@ -13,7 +13,7 @@
 (function(){var k="";try{var d=new Date(),M=d.getMonth()+1,h=d.getHours();
 var s=M>=3&&M<=5?"spring":M>=6&&M<=8?"summer":M>=9&&M<=11?"autumn":"winter";
 var t=h>=4&&h<7?"dawn":h>=7&&h<17?"day":h>=17&&h<21?"evening":"night";k=s+"-"+t;
-var READY={"spring-dawn":1,"spring-day":1,"spring-evening":1,"spring-night":1,"summer-dawn":1,"summer-day":1,"summer-evening":1,"summer-night":1,"autumn-dawn":1,"autumn-day":1,"autumn-evening":1,"autumn-night":1};/* 검수 통과분만 노출, 나머지는 원본 히어로 */
+var READY={};/* 검수 재진행 중: 전 조합 원본 히어로 표시 *//* 검수 통과분만 노출, 나머지는 원본 히어로 */
 if(!READY[k])k="";
 var q=/[?&]hero=((?:spring|summer|autumn|winter)-(?:dawn|day|evening|night))(?:&|$)/.exec(location.search);if(q&&READY[q[1]])k=q[1];}catch(e){k="";}
 window.__hero=k;var a=k?"/img/hero/"+k:"/img/hero",b=k?"/img/hero/"+k+"-m.webp":"/img/hero-m.webp";
