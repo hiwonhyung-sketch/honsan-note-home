@@ -578,5 +578,21 @@ s.srcset="/img/hero/"+k+"-m.webp";i.src="/img/hero/"+k+".webp";})();</script>
   }
 })();
 </script>
+<script>/* 히어로 미리보기: 주소에 ?preview=1 이 있을 때만 16종 전환 패널을 보여 준다(일반 방문자에게는 나타나지 않음) */
+(function(){if(!/[?&](preview|hero)=/.test(location.search))return;
+var S=[["spring","봄"],["summer","여름"],["autumn","가을"],["winter","겨울"]],T=[["dawn","새벽"],["day","낮"],["evening","저녁"],["night","심야"]];
+var i=document.getElementById("heroImg"),s=document.getElementById("heroSrc");if(!i||!s)return;
+var box=document.createElement("div");box.setAttribute("style","position:fixed;right:8px;bottom:8px;z-index:99;background:rgba(16,22,19,.94);color:#fff;border-radius:12px;padding:8px;font:12px/1.2 system-ui,sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.4)");
+var head=document.createElement("div");head.setAttribute("style","display:flex;justify-content:space-between;gap:12px;margin-bottom:6px");
+head.innerHTML='<b>히어로 미리보기</b>';var tg=document.createElement("button");tg.textContent="접기";tg.setAttribute("style","background:none;border:0;color:#9fd;cursor:pointer;font:inherit");head.appendChild(tg);box.appendChild(head);
+var grid=document.createElement("div");grid.setAttribute("style","display:grid;grid-template-columns:repeat(4,1fr);gap:4px");var btns={};
+function mark(k){for(var n in btns){btns[n].style.background=n===k?"#2e8b57":"#2a332e";}}
+function show(k){s.srcset="/img/hero/"+k+"-m.webp";i.src="/img/hero/"+k+".webp";i.classList.add("ready");mark(k);try{history.replaceState(null,"","?preview=1&hero="+k);}catch(e){}}
+S.forEach(function(a){T.forEach(function(t){var k=a[0]+"-"+t[0],b=document.createElement("button");b.textContent=a[1]+" "+t[1];
+b.setAttribute("style","background:#2a332e;color:#fff;border:0;border-radius:8px;padding:9px 6px;cursor:pointer;font:inherit;min-width:64px");
+b.onclick=function(){show(k);};btns[k]=b;grid.appendChild(b);});});
+box.appendChild(grid);var open=true;tg.onclick=function(){open=!open;grid.style.display=open?"grid":"none";tg.textContent=open?"접기":"펼치기";};
+document.body.appendChild(box);var m=/[?&]hero=([a-z]+-[a-z]+)/.exec(location.search);if(m&&btns[m[1]])mark(m[1]);})();
+</script>
 </body>
 </html>
