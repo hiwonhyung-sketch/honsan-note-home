@@ -18,7 +18,8 @@ const path = require('path');
 const crypto = require('crypto');
 
 const HERE = __dirname;
-const APP = path.join(HERE, '..', '..', 'honsan-native');
+// ★2026-10-30 — 앱 저장소 위치를 HONSAN_APP 으로 바꿀 수 있다(이 폴더를 다른 곳에 사본으로 받아 돌릴 때 · 앱의 동기 관문이 쓴다).
+const APP = process.env.HONSAN_APP ? path.resolve(process.env.HONSAN_APP) : path.join(HERE, '..', '..', 'honsan-native');
 
 const DOCS = [
   { key: 'privacy', src: 'docs/PRIVACY.md', gen: 'src/privacyDoc.ts', hashConst: 'PRIVACY_DOC_HASH',
@@ -65,6 +66,12 @@ function parse(md) {
       list.items.push({ n: Number(m[1]), text: m[2].trim() });
       continue;
     }
+    // ★2026-10-30 — 번호 항목 아래 들여쓴 번호 줄(약관 제11조 «1. … 2. …» 같은 하위 목록)은 바로 앞 항목의 하위 목록이다.
+    if ((m = /^\s{2,}(\d+)\. (.+)$/.exec(ln)) && list && list.t === 'ol' && list.items.length) {
+      const last = list.items[list.items.length - 1];
+      (last.sub = last.sub || []).push({ n: Number(m[1]), text: m[2].trim() });
+      continue;
+    }
     if ((m = /^[-*] (.+)$/.exec(ln))) {
       if (!list || list.t !== 'ul') { closeList(); list = { t: 'ul', items: [] }; }
       list.items.push({ text: m[1].trim() });
@@ -87,7 +94,10 @@ function bodyHtml(blocks) {
     if (b.t === 'h2') return '<h2 id="' + b.id + '">' + esc(b.text) + '</h2>';
     if (b.t === 'p') return '<p>' + esc(b.text) + '</p>';
     if (b.t === 'ul') return '<ul>' + b.items.map((i) => '<li>' + esc(i.text) + '</li>').join('') + '</ul>';
-    if (b.t === 'ol') return '<ol>' + b.items.map((i) => '<li value="' + i.n + '">' + esc(i.text) + '</li>').join('') + '</ol>';
+    if (b.t === 'ol') {
+      const li = (i) => '<li value="' + i.n + '">' + esc(i.text) + (i.sub ? '<ol>' + i.sub.map(li).join('') + '</ol>' : '') + '</li>';
+      return '<ol>' + b.items.map(li).join('') + '</ol>';
+    }
     if (b.t === 'table') {
       const th = b.head.map((c) => '<th scope="col">' + esc(c) + '</th>').join('');
       const tr = b.rows.map((r) => '<tr>' + r.map((c, k) => (k === 0 ? '<th scope="row">' + esc(c) + '</th>' : '<td data-label="' + esc(b.head[k] || '') + '">' + esc(c) + '</td>')).join('') + '</tr>').join('');
